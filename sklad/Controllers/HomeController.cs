@@ -30,7 +30,7 @@ namespace sklad.Controllers
             return View();
         }
 
-        //[HttpGet]
+        [HttpGet]
         public ActionResult Create()
         {
             ViewBag.ParentthingSL = new SelectList(db.Things,"Id","Name");
@@ -42,6 +42,7 @@ namespace sklad.Controllers
         {
             if (ModelState.IsValid)
             {
+                //db.Things.Find(thing.ParentThingId).ParentThingId = thing.Id;
                 db.Things.Add(thing);
                 db.SaveChanges();
 
