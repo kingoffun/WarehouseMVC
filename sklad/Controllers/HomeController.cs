@@ -10,6 +10,7 @@ namespace sklad.Controllers
     public class HomeController : Controller
     {
         WarehouseContext db = new WarehouseContext();
+
         public ActionResult Index()
         {
             var property = db.Things;
@@ -53,6 +54,30 @@ namespace sklad.Controllers
                 return View(thing);
             }
 
+        }
+
+        public ActionResult Details(int id)
+        {
+            Thing thing = db.Things.Find(id);
+
+            if (thing == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(thing);
+        }
+
+        public ActionResult Edit(int id = 0)
+        {
+            Thing thing = db.Things.Find(id);
+
+            if (thing == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.Includes = db.Things.ToList();
+            return View(thing);
         }
     }
 }

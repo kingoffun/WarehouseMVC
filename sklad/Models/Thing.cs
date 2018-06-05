@@ -59,7 +59,7 @@ namespace sklad.Models
 
         public Thing()
         {
-            //ParentThingId = null;
+            Includes = new HashSet<Thing>();
         }
     }
 

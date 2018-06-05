@@ -152,17 +152,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201805292116192_CreateFirstThingModel.cs" />
-    <Compile Include="Migrations\201805292116192_CreateFirstThingModel.Designer.cs">
-      <DependentUpon>201805292116192_CreateFirstThingModel.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201805310849263_CreateFirstThingModel1.cs" />
-    <Compile Include="Migrations\201805310849263_CreateFirstThingModel1.Designer.cs">
-      <DependentUpon>201805310849263_CreateFirstThingModel1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201806041246321_manyToMany.cs" />
-    <Compile Include="Migrations\201806041246321_manyToMany.Designer.cs">
-      <DependentUpon>201806041246321_manyToMany.cs</DependentUpon>
+    <Compile Include="Migrations\201806050833449_init.cs" />
+    <Compile Include="Migrations\201806050833449_init.Designer.cs">
+      <DependentUpon>201806050833449_init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Thing.cs" />
@@ -212,6 +204,8 @@
     <Content Include="Views\Home\- Index.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Create.cshtml" />
+    <Content Include="Views\Home\Details.cshtml" />
+    <Content Include="Views\Home\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -230,14 +224,8 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201805292116192_CreateFirstThingModel.resx">
-      <DependentUpon>201805292116192_CreateFirstThingModel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201805310849263_CreateFirstThingModel1.resx">
-      <DependentUpon>201805310849263_CreateFirstThingModel1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201806041246321_manyToMany.resx">
-      <DependentUpon>201806041246321_manyToMany.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201806050833449_init.resx">
+      <DependentUpon>201806050833449_init.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
