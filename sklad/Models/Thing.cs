@@ -11,14 +11,19 @@ namespace sklad.Models
     {
         // identifier
         public int Id { get; set; }
+        //accounting account
+        public int Account { get; set; }
         // property/product name
         public string Name { get; set; }
-        // serial or factory nnumber
-        [Display(Name = "Serial number")]
-        public string SerialNumber { get; set; }
-        // product/property produce date or income date
+        // product/property produce/buy/incom date
         [Display(Name = "Produce date")]
         public DateTime ProduceDate { get; set; }
+        // serial or factory nnumber
+        [Display(Name = "Serial/manufacturing number")]
+        public string SerialNumber { get; set; }
+        // product form/passport with list of all component parts of the product/property
+        [Display(Name = "Form number")]
+        public string PassportNumber { get; set; }
         // inventory number for fixed asset
         [Display(Name = "Inventory number")]
         public int InventoryNumb { get; set; }
@@ -27,6 +32,8 @@ namespace sklad.Models
         public MeasurementUnits MeasureUnit { get; set; }
         // amount of property/product given to save
         public int Quantity { get; set; }
+        //product price
+        public int Price { get; set; }
         // organisation/plase/internal unit/person/internal document
         // from where/whom product/property has arrived
         [Display(Name = "From where")]
@@ -40,9 +47,6 @@ namespace sklad.Models
         // document type
         [Display(Name = "Document type")]
         public DocumentTypes DocType { get; set; }
-        // product form with list of all component parts of the product/property
-        [Display(Name = "Form number")]
-        public string Form { get; set; }
         // product/property type
         [Display(Name = "Product type")]
         public PropertyTypes ProdType { get; set; }
@@ -86,7 +90,7 @@ namespace sklad.Models
         SSD,
         VideoCard,
         Keyboard,
-        Mous,
+        Mouse,
         Printer,
         Scanner,
         Other
