@@ -156,6 +156,10 @@
     <Compile Include="Migrations\201806050833449_init.Designer.cs">
       <DependentUpon>201806050833449_init.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201807201436516_reoreder_add_fields.cs" />
+    <Compile Include="Migrations\201807201436516_reoreder_add_fields.Designer.cs">
+      <DependentUpon>201807201436516_reoreder_add_fields.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Thing.cs" />
     <Compile Include="Models\WarehouseContext.cs" />
@@ -226,6 +230,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201806050833449_init.resx">
       <DependentUpon>201806050833449_init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807201436516_reoreder_add_fields.resx">
+      <DependentUpon>201807201436516_reoreder_add_fields.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

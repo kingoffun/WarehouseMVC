@@ -9,101 +9,127 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<div class="table-responsive">
-    <table class="table table-bordered table-hover">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.SerialNumber)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ProduceDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.InventoryNumb)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.MeasureUnit)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Quantity)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FromWhere)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DocNumber)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DocDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DocType)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Form)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ProdType)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.WorkName)
-            </th>
-            <th></th>
-        </tr>
+<div class="row">
+    <div class="col-2">
+        <a href="#">link 1</a>
+        <a href="#">link 2</a>
+        <a href="#">link 3</a>
+        <a href="#">link 4</a>
+        <a href="#">link 5</a>
+    </div>
+    <div class="col-10">
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.WorkName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Account)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.SerialNumber)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PassportNumber)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.InventoryNumb)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.MeasureUnit)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Quantity)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Price)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ProduceDate)
+                    </th>
+                    
+                    @*<th>
+                        @Html.DisplayNameFor(model => model.FromWhere)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DocNumber)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DocDate)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DocType)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ProdType)
+                    </th>*@
+                    <th></th>
+                </tr>
 
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.SerialNumber)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ProduceDate)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.InventoryNumb)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.MeasureUnit)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Quantity)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.FromWhere)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DocNumber)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DocDate)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DocType)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Form)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ProdType)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.WorkName)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-                </td>
-            </tr>
-        }
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.WorkName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Account)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.SerialNumber)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PassportNumber)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.InventoryNumb)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MeasureUnit)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Quantity)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Price)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ProduceDate)
+                        </td>
 
-    </table>
+                        @*<td>
+                            @Html.DisplayFor(modelItem => item.FromWhere)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DocNumber)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DocDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DocType)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ProdType)
+                        </td>*@
+                       
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                        </td>
+                    </tr>
+                }
 
+            </table>
+
+        </div>
+    </div>
 </div>

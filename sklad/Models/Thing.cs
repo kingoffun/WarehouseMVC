@@ -17,6 +17,8 @@ namespace sklad.Models
         public string Name { get; set; }
         // product/property produce/buy/incom date
         [Display(Name = "Produce date")]
+        //[DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd'/'MM'/'yyyy}")]
         public DateTime ProduceDate { get; set; }
         // serial or factory nnumber
         [Display(Name = "Serial/manufacturing number")]
