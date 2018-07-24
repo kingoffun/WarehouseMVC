@@ -10,14 +10,37 @@
     @Html.ActionLink("Create New", "Create")
 </p>
 <div class="row">
-    <div class="col-2">
-        <a href="#">link 1</a>
-        <a href="#">link 2</a>
-        <a href="#">link 3</a>
-        <a href="#">link 4</a>
-        <a href="#">link 5</a>
+    <div class="col-md-3 border-top border-right">
+        <ul class="nav nav-tabs nav-fill">
+            <li class="nav-item">
+                <a class="nav-link" href="#allFilters">All</a> 
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#selectedFilters">Selected</a>
+            </li>
+        </ul>
+        <div id="allFilters" class="accordion">
+            <div class="card">
+                <div class="card-header" id="headingOne">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            Accounting accounts
+                        </button>
+                    </h5>
+                </div>
+
+                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#allFilters">
+                    <div class="card-body">
+                        account 1
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="selectedFilters">
+
+        </div>
     </div>
-    <div class="col-10">
+    <div class="col-md-9">
         <div class="table-responsive">
             <table class="table table-bordered table-hover">
                 <tr>
