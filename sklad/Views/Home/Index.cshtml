@@ -11,33 +11,58 @@
 </p>
 <div class="row">
     <div class="col-md-3 border-top border-right">
-        <ul class="nav nav-tabs nav-fill">
+        <ul class="nav nav-tabs nav-fill" id="filtersTab" role="tablist">
             <li class="nav-item">
-                <a class="nav-link" href="#allFilters">All</a> 
+                <a class="nav-link active" id="allTab" data-toggle="tab" role="tab" aria-controls="allFilters" href="#allFilters" aria-selected="true">All</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#selectedFilters">Selected</a>
+                <a class="nav-link" id="selectedTab" data-toggle="tab" role="tab" aria-controls="selectedFilters" href="#selectedFilters" aria-selected="false">Selected</a>
             </li>
         </ul>
-        <div id="allFilters" class="accordion">
-            <div class="card">
-                <div class="card-header" id="headingOne">
-                    <h5 class="mb-0">
-                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                            Accounting accounts
-                        </button>
-                    </h5>
-                </div>
-
-                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#allFilters">
-                    <div class="card-body">
-                        account 1
+        <div class="tab-content" id="filtersTabContent">
+            <div id="allFilters" class="tab-pane fade show active" role="tabpanel">
+                @*<div id="accountFilter" class="accordion">*@
+                    <div class="card">
+                        <div class="card-header" id="headingAccounts">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseAccounts" aria-expanded="true" aria-controls="collapseAccounts">
+                                    <span class="oi oi-caret-bottom"></span>
+                                    Accounts
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapseAccounts" class="collapse show" >
+                            <div class="card-body ">
+                                <p><input type="checkbox" /> 1512</p>
+                                <p><input type="checkbox" /> 1515</p>
+                                <p><input type="checkbox" /> 1517</p>
+                                <p><input type="checkbox" /> 1518</p>
+                            </div>
+                        </div>
                     </div>
-                </div>
+                @*<div id="workFilter" class="accordion">*@
+                    <div class="card">
+                        <div class="card-header" id="headingWorks">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseWorks" aria-expanded="true" aria-controls="collapseWorks">
+                                    <span class="oi oi-caret-bottom"></span>
+                                    Works
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapseWorks" class="collapse show">
+                            <div class="card-body ">
+                                <p><input type="checkbox" /> Parametr</p>
+                                <p><input type="checkbox" /> Grom-2</p>
+                                <p><input type="checkbox" /> Barva-A</p>
+                                <p><input type="checkbox" /> Tsylindr</p>
+                            </div>
+                        </div>
+                    </div>
             </div>
-        </div>
-        <div id="selectedFilters">
+            <div id="selectedFilters" class="tab-pane fade" role="tabpanel">
 
+            </div>
         </div>
     </div>
     <div class="col-md-9">
@@ -74,22 +99,22 @@
                     <th>
                         @Html.DisplayNameFor(model => model.ProduceDate)
                     </th>
-                    
-                    @*<th>
-                        @Html.DisplayNameFor(model => model.FromWhere)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.DocNumber)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.DocDate)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.DocType)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.ProdType)
-                    </th>*@
+
+                    <!-- @*<th>
+                         @Html.DisplayNameFor(model => model.FromWhere)
+                     </th>
+                     <th>
+                         @Html.DisplayNameFor(model => model.DocNumber)
+                     </th>
+                     <th>
+                         @Html.DisplayNameFor(model => model.DocDate)
+                     </th>
+                     <th>
+                         @Html.DisplayNameFor(model => model.DocType)
+                     </th>
+                     <th>
+                         @Html.DisplayNameFor(model => model.ProdType)
+                     </th>*@-->
                     <th></th>
                 </tr>
 
@@ -127,22 +152,22 @@
                             @Html.DisplayFor(modelItem => item.ProduceDate)
                         </td>
 
-                        @*<td>
-                            @Html.DisplayFor(modelItem => item.FromWhere)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.DocNumber)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.DocDate)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.DocType)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.ProdType)
-                        </td>*@
-                       
+                        <!-- @*<td>
+                             @Html.DisplayFor(modelItem => item.FromWhere)
+                         </td>
+                         <td>
+                             @Html.DisplayFor(modelItem => item.DocNumber)
+                         </td>
+                         <td>
+                             @Html.DisplayFor(modelItem => item.DocDate)
+                         </td>
+                         <td>
+                             @Html.DisplayFor(modelItem => item.DocType)
+                         </td>
+                         <td>
+                             @Html.DisplayFor(modelItem => item.ProdType)
+                         </td>*@-->
+
                         <td>
                             @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
                             @Html.ActionLink("Details", "Details", new { id = item.Id }) |

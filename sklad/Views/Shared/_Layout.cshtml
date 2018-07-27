@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/oi-css")
+
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
@@ -56,5 +58,13 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.collapse').on('shown.bs.collapse', function () {
+                $(this).parent().find('.oi-caret-bottom').removeClass('.oi-caret-bottom').addClass('.oi-caret-top');
+            });
+        });
+    </script>
 </body>
 </html>
