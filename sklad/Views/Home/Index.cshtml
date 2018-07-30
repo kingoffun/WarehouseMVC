@@ -20,14 +20,34 @@
             </li>
         </ul>
         <div class="tab-content" id="filtersTabContent">
-            <div id="allFilters" class="tab-pane fade show active" role="tabpanel">
-                @*<div id="accountFilter" class="accordion">*@
-                    <div class="card">
+            <div id="allFilters" class="tab-pane fade show active" role="tabpanel" style="overflow-y:scroll;height:600px;">
+
+                <div class="card">
+                    <div class="card-header" id="headingCategory">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseCategory" aria-expanded="true" aria-controls="collapseCategory">
+                                <span class="oi oi-chevron-top"></span>
+                                Category
+                            </button>
+                        </h5>
+                    </div>
+                    <div id="collapseCategory" class="collapse show">
+                        <div class="card-body ">
+                            <p><input type="checkbox" /> Display</p>
+                            <p><input type="checkbox" /> HDD</p>
+                            <p><input type="checkbox" /> RAM</p>
+                            <p><input type="checkbox" /> CPU</p>
+                            <p><input type="checkbox" /> Motherboard</p>
+                        </div>
+                    </div>
+                </div>
+                   
+                <div class="card">
                         <div class="card-header" id="headingAccounts">
                             <h5 class="mb-0">
                                 <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseAccounts" aria-expanded="true" aria-controls="collapseAccounts">
-                                    <span class="oi oi-caret-bottom"></span>
-                                    Accounts
+                                    <span class="oi oi-chevron-top"></span>
+                                     Accounts
                                 </button>
                             </h5>
                         </div>
@@ -40,13 +60,13 @@
                             </div>
                         </div>
                     </div>
-                @*<div id="workFilter" class="accordion">*@
-                    <div class="card">
+                    
+                <div class="card">
                         <div class="card-header" id="headingWorks">
                             <h5 class="mb-0">
                                 <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseWorks" aria-expanded="true" aria-controls="collapseWorks">
-                                    <span class="oi oi-caret-bottom"></span>
-                                    Works
+                                    <span class="oi oi-chevron-top"></span>
+                                     Works
                                 </button>
                             </h5>
                         </div>
@@ -59,6 +79,65 @@
                             </div>
                         </div>
                     </div>
+
+
+                <div class="card">
+                    <div class="card-header" id="headingType">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseType" aria-expanded="true" aria-controls="collapseType">
+                                <span class="oi oi-chevron-top"></span>
+                                Type
+                            </button>
+                        </h5>
+                    </div>
+                    <div id="collapseType" class="collapse show">
+                        <div class="card-body ">
+                            <p><input type="checkbox" /> Main</p>
+                            <p><input type="checkbox" /> Stocks</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header" id="headingPrice">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapsePrice" aria-expanded="true" aria-controls="collapsePrice">
+                                <span class="oi oi-chevron-top"></span>
+                                Price
+                            </button>
+                        </h5>
+                    </div>
+                    <div id="collapsePrice" class="collapse show">
+                        <div class="card-body ">
+                            from
+                            <input id="priceFrom" type="text" />
+                            to
+                            <input id="priceTo" type="text" />
+                            <button class="btn btn-info">OK</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header" id="headingYear">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseYear" aria-expanded="true" aria-controls="collapseYear">
+                                <span class="oi oi-chevron-top"></span>
+                                Year
+                            </button>
+                        </h5>
+                    </div>
+                    <div id="collapseYear" class="collapse show">
+                        <div class="card-body ">
+                            from
+                            <input id="yearFrom" type="text" />
+                            to
+                            <input id="yearTo" type="text" />
+                            <button class="btn btn-info">OK</button>
+                        </div>
+                    </div>
+                </div>
+
             </div>
             <div id="selectedFilters" class="tab-pane fade" role="tabpanel">
 

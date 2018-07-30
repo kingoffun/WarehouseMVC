@@ -62,7 +62,9 @@
     <script type="text/javascript">
         $(document).ready(function () {
             $('.collapse').on('shown.bs.collapse', function () {
-                $(this).parent().find('.oi-caret-bottom').removeClass('.oi-caret-bottom').addClass('.oi-caret-top');
+                $(this).parent().find('.oi-chevron-bottom').removeClass('oi-chevron-bottom').addClass('oi-chevron-top');
+            }).on('hidden.bs.collapse', function () {
+                $(this).parent().find('.oi-chevron-top').removeClass('oi-chevron-top').addClass('oi-chevron-bottom');
             });
         });
     </script>
