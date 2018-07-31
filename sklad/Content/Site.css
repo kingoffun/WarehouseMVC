@@ -22,3 +22,25 @@ select,
 textarea {
     max-width: 280px;
 }
+
+/* custom insert */ /* custom insert */
+
+input.field{
+    width:75px;
+}
+
+div#filtersCol {
+    padding: 0;
+}
+
+div#filtersCol .card-body {
+    padding: 10px 0 0 10px;
+}
+
+div#filtersCol .card-header {
+    padding: 5px 10px 5px 10px;
+}
+
+    div#filtersCol .card-header button {
+        padding: 0;
+    }
