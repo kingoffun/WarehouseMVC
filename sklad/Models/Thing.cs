@@ -21,7 +21,7 @@ namespace sklad.Models
         [DisplayFormat(DataFormatString = "{0:dd'/'MM'/'yyyy}")]
         public DateTime ProduceDate { get; set; }
         // serial or factory nnumber
-        [Display(Name = "Serial/manufacturing number")]
+        [Display(Name = "Serial number")]
         public string SerialNumber { get; set; }
         // product form/passport with list of all component parts of the product/property
         [Display(Name = "Form number")]
