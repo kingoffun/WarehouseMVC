@@ -67,6 +67,54 @@
                 $(this).parent().find('.oi-chevron-top').removeClass('oi-chevron-top').addClass('oi-chevron-bottom');
             });
         });
+
+        $(document).ready(function () {
+            $(document).on("click", "#resultTable tbody tr", function () {
+                alert($(this).getElementsByTagName("input").value);
+            });
+        });
+
+        function tableSearch() {
+            var input, filter, table, tr, td, i;
+            input = document.getElementById("searchInput");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("resultTable");
+            tr = table.getElementsByTagName("tr");
+
+            for (i = 0; i < tr.length; i++){
+                td = tr[i].getElementsByTagName("td")[2];
+                if (td) {
+                    if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+
+        $('#btn_thing_left').click(function (e) {
+            var selectedOpts = $('#ta_all option:selected');
+            if (selectedOpts.length == 0) {
+                alert("Nothing from Things selected to move.");
+                e.preventDefault();
+            }
+            $('#ta_includs').append($(selectedOpts).clone());
+            $(selectedOpts).remove();
+            e.preventDefault();
+        });
+
+        $('#btn_thing_right').click(function (e) {
+            var selectedOpts = $('#ta_includs option:selected');
+            if (selectedOpts.length == 0) {
+                alert("Nothing from Composit parts selected to move.");
+                e.preventDefault();
+            }
+            $('#ta_all').append($(selectedOpts).clone());
+            $(selectedOpts).remove();
+            e.preventDefault();
+        });
+
     </script>
 </body>
 </html>

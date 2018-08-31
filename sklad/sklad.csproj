@@ -92,6 +92,8 @@
       <HintPath>..\packages\System.Diagnostics.DiagnosticSource.4.5.0\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
     </Reference>
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -157,7 +159,25 @@
       <DependentUpon>201807201436516_reoreder_add_fields.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\skladDBModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>skladDBModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\skladDBModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>skladDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\skladDBModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>skladDBModel.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Models\Thing.cs" />
+    <Compile Include="Models\Things.cs">
+      <DependentUpon>skladDBModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\WarehouseContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -1746,6 +1766,16 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Models\skladDBModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>skladDBModel.edmx</DependentUpon>
+      <LastGenOutput>skladDBModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\skladDBModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>skladDBModel.edmx</DependentUpon>
+      <LastGenOutput>skladDBModel.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -3128,6 +3158,13 @@
     <Content Include="Content\open-iconic-master\webp\zoom-out-6x.webp" />
     <Content Include="Content\open-iconic-master\webp\zoom-out-8x.webp" />
     <Content Include="Content\open-iconic-master\webp\zoom-out.webp" />
+    <EntityDeploy Include="Models\skladDBModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>skladDBModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\skladDBModel.edmx.diagram">
+      <DependentUpon>skladDBModel.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\index.d.ts" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -3200,6 +3237,9 @@
     <EmbeddedResource Include="Migrations\201807201436516_reoreder_add_fields.resx">
       <DependentUpon>201807201436516_reoreder_add_fields.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

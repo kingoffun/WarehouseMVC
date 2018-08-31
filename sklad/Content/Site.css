@@ -20,7 +20,7 @@
 input,
 select,
 textarea {
-    max-width: 280px;
+    /*max-width: 280px;*/
 }
 
 /* custom insert */ /* custom insert */
@@ -41,6 +41,20 @@ div#filtersCol .card-header {
     padding: 5px 10px 5px 10px;
 }
 
-    div#filtersCol .card-header button {
-        padding: 0;
-    }
+div#filtersCol .card-header button {
+    padding: 0;
+}
+
+div#allFilters {
+    overflow-y:scroll;
+    height:600px;
+    padding-bottom:50px;
+}
+
+td, th {
+    vertical-align:middle;
+}
+
+textarea#ta_includs, textarea#ta_things {
+    width:100%;
+}

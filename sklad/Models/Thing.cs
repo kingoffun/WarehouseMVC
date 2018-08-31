@@ -67,6 +67,11 @@ namespace sklad.Models
         {
             Includes = new HashSet<Thing>();
         }
+
+        //public void IncludesSelection()
+        //{
+
+        //}
     }
 
     public enum MeasurementUnits

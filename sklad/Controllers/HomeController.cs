@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using sklad.Models;
+using System.Data.Entity;
 
 namespace sklad.Controllers
 {
@@ -34,7 +35,17 @@ namespace sklad.Controllers
         [HttpGet]
         public ActionResult Create()
         {
-            ViewBag.ParentthingSL = new SelectList(db.Things,"Id","Name");
+            //ViewBag.ParentthingSL = new SelectList(db.Things,"Id","Name");
+            //IEnumerable<string> includs = (from t in db.Things
+            //                      where t.Includes != null || (t.Includes == null && t.Quantity >= 1)
+            //                      select t.Name).ToList();
+
+
+
+            var str = from t in db.Things
+                      where !t.Includes.Any() || (t.Includes.Any() && t.Quantity >= 1)
+                      select new SelectListItem { Text = t.Name, Value = t.Name };
+            ViewBag.ForIncludes = str;//.ToList<string>();
             return View();
         }
 
@@ -53,7 +64,6 @@ namespace sklad.Controllers
             {
                 return View(thing);
             }
-
         }
 
         public ActionResult Details(int id)
@@ -77,6 +87,19 @@ namespace sklad.Controllers
                 return HttpNotFound();
             }
             ViewBag.Includes = db.Things.ToList();
+            return View(thing);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(Thing thing)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(thing).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
             return View(thing);
         }
     }

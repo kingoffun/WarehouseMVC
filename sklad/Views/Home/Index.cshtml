@@ -16,7 +16,7 @@
             </li>
         </ul>
         <div class="tab-content" id="filtersTabContent">
-            <div id="allFilters" class="tab-pane fade show active" role="tabpanel" style="overflow-y:scroll;height:600px;">
+            <div id="allFilters" class="tab-pane fade show active" role="tabpanel">
 
                 <div class="card">
                     <div class="card-header" id="headingCategory">
@@ -154,13 +154,13 @@
             <span class="col-auto">
                 <label>
                     Search:
-                    <input type="search" class="form-control-sm" />
+                    <input type="text" id="searchInput" class="form-control-sm" placeholder="Search for..." onkeyup="tableSearch()"/>
                 </label>
             </span>    
         </div>
 
         <div class="table-responsive">
-            <table class="table table-sm table-bordered table-hover">
+            <table id="resultTable" class="table table-sm table-bordered table-hover">
                 <thead>
                     <tr>
                         <th>
@@ -216,6 +216,7 @@
                     @foreach (var item in Model)
                     {
                         <tr>
+                            @Html.HiddenFor(modelItem => item.Id)
                             <td>
                                 @Html.DisplayFor(modelItem => item.WorkName)
                             </td>
