@@ -7,14 +7,14 @@
 <h2>Add new thing</h2>
 
 
-@using (Html.BeginForm())
+@using (Html.BeginForm(@*null,null, FormMethod.Post, new { name = "crtForm", id = "crtForm"}*@))
 {
     @Html.AntiForgeryToken()
 
     @*<h4>Thing</h4>*@
-    <hr />
+    <hr/>
 
-    <div class="form-group ">
+   <div class="form-group ">
         @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label " })
         @*<div class="col-md-10">*@
         @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
@@ -146,7 +146,9 @@
     <div class="form-group col-md-5">
         @Html.Label("Composite parts", htmlAttributes: new { @class = "control-label d-block" })
         @*<div class="col-md-10">*@
-        @Html.ListBox("ta_includs", new List<SelectListItem> { new SelectListItem { Text = "", Value = "" } } ,new { @class = "form-control d-block", @size = "15" } )
+        @*@Html.ListBox("ta_includs", new List<SelectListItem>() ,new { @class = "form-control d-block", @size = "15" } )*@
+
+        @Html.ListBoxFor(model => model.Includes, new List<SelectListItem>(), new { @class = "form-control d-block", @size = "15" })
         @*@Html.ValidationMessageFor(model => model.WorkName, "", new { @class = "text-danger" })*@
         @*</div>*@
     </div>

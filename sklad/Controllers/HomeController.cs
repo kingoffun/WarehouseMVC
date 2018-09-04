@@ -50,18 +50,23 @@ namespace sklad.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(Thing thing)
+        public ActionResult Create(Thing thing, FormCollection form)
         {
             if (ModelState.IsValid)
             {
                 //db.Things.Find(thing.ParentThingId).ParentThingId = thing.Id;
+                //Thing th = new Thing { Name = form["Includes"].ToString()};
+
                 db.Things.Add(thing);
+                var c1 = form["Includes"];
                 db.SaveChanges();
 
                 return RedirectToAction("Index");
             }
             else
             {
+                //Thing th = new Thing { Name = form["Includes"].ToString() };
+                var c = form["Includes"];
                 return View(thing);
             }
         }
