@@ -42,10 +42,14 @@ namespace sklad.Controllers
 
 
 
-            var str = from t in db.Things
-                      where !t.Includes.Any() || (t.Includes.Any() && t.Quantity >= 1)
-                      select new SelectListItem { Text = t.Name, Value = t.Name };
-            ViewBag.ForIncludes = str;//.ToList<string>();
+            //var str = from t in db.Things
+            //          where !t.Includes.Any() || (t.Includes.Any() && t.Quantity >= 1)
+            //          select new SelectListItem { Text = t.Name, Value = t.Name };
+            var includs = db.Things.SelectMany(p => p.Includes).Select(p => p.Name);
+            var str1 = from t in db.Things
+                      where !includs.Contains(t.Name) 
+                      select new SelectListItem { Text = t.Name + " s/n:" + t.SerialNumber, Value = t.Name };
+            ViewBag.ForIncludes = str1;//.ToList<string>();
             return View();
         }
 
@@ -57,8 +61,17 @@ namespace sklad.Controllers
                 //db.Things.Find(thing.ParentThingId).ParentThingId = thing.Id;
                 //Thing th = new Thing { Name = form["Includes"].ToString()};
 
+                var c1 = form["ta_includs"].Split(',').ToList<string>();
+
+                
+
+                foreach (var t in c1)
+                {
+                    thing.Includes.Add(
+                        db.Things.Where(x => x.Name == t.ToString()).FirstOrDefault());
+                }
+
                 db.Things.Add(thing);
-                var c1 = form["Includes"];
                 db.SaveChanges();
 
                 return RedirectToAction("Index");
@@ -66,7 +79,10 @@ namespace sklad.Controllers
             else
             {
                 //Thing th = new Thing { Name = form["Includes"].ToString() };
-                var c = form["Includes"];
+                var c = form["ta_includs"];
+
+                var errors = ModelState.Values.SelectMany(v => v.Errors);
+
                 return View(thing);
             }
         }
