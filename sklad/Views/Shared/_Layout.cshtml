@@ -100,14 +100,14 @@
                 e.preventDefault();
             }
 
-            $('#ta_includs').append($(selectedOpts).clone());
-            $('#ta_includs option').prop("selected", "selected");
+            $('#Includes').append($(selectedOpts).clone());
+            $('#Includes option').prop("selected", "selected");
             $(selectedOpts).remove();
             e.preventDefault();
         });
 
         $('#btn_thing_right').click(function (e) {
-            var selectedOpts = $('#ta_includs option:selected');
+            var selectedOpts = $('#Includes option:selected');
             if (selectedOpts.length == 0) {
                 alert("Nothing from Composit parts selected to move.");
                 e.preventDefault();

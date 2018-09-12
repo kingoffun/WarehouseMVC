@@ -58,12 +58,7 @@ namespace sklad.Controllers
         {
             if (ModelState.IsValid)
             {
-                //db.Things.Find(thing.ParentThingId).ParentThingId = thing.Id;
-                //Thing th = new Thing { Name = form["Includes"].ToString()};
-
                 var c1 = form["ta_includs"].Split(',').ToList<string>();
-
-                
 
                 foreach (var t in c1)
                 {
@@ -79,9 +74,8 @@ namespace sklad.Controllers
             else
             {
                 //Thing th = new Thing { Name = form["Includes"].ToString() };
-                var c = form["ta_includs"];
-
-                var errors = ModelState.Values.SelectMany(v => v.Errors);
+                //var c = form["ta_includs"];
+                //var errors = ModelState.Values.SelectMany(v => v.Errors);
 
                 return View(thing);
             }
@@ -107,15 +101,50 @@ namespace sklad.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.Includes = db.Things.ToList();
+
+            ViewBag.Includes = thing.Includes.Select(p => new SelectListItem { Text = p.Name + " s/n:" + p.SerialNumber, Value = p.Name }).ToList();
+
+            var includs = db.Things.SelectMany(p => p.Includes).Select(p => p.Name);
+            var str1 = from t in db.Things
+                       where !includs.Contains(t.Name)
+                       select new SelectListItem { Text = t.Name + " s/n:" + t.SerialNumber, Value = t.Name };
+
+            ViewBag.ForIncludes = str1;//.ToList<string>();
+
             return View(thing);
         }
 
         [HttpPost]
-        public ActionResult Edit(Thing thing)
+        public ActionResult Edit(Thing thing, FormCollection form)
         {
             if (ModelState.IsValid)
             {
+                var c1 = form["ta_includs"].Split(',').ToList<string>();
+
+                if (!thing.Includes.Any())
+                {
+                    foreach (var t in c1)
+                    {
+                        thing.Includes.Add(
+                            db.Things.Where(x => x.Name == t).FirstOrDefault());
+                    }
+                }
+                else
+                {
+                    foreach (var t in c1)
+                    {
+                        if (thing.Includes.Contains(db.Things.Where(x => x.Name == t).FirstOrDefault()))
+                        {
+                            continue;
+                        }
+                        else
+                        {
+                            thing.Includes.Add(
+                            db.Things.Where(x => x.Name == t).FirstOrDefault());
+                        }
+                    }
+                }
+
                 db.Entry(thing).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
