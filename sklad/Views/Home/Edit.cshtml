@@ -4,10 +4,10 @@
     ViewBag.Title = "Edit";
 }
 
-<h2>Add new thing</h2>
+<h2>Edit  thing</h2>
 
 
-@using (Html.BeginForm(null, null, FormMethod.Post, new { name = "crtForm", id = "crtForm" }))
+@using (Html.BeginForm("Edit", "Home", FormMethod.Post, new { name = "crtForm", id = "crtForm" }))
 {
     @Html.AntiForgeryToken()
 

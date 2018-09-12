@@ -58,12 +58,12 @@ namespace sklad.Controllers
         {
             if (ModelState.IsValid)
             {
-                var c1 = form["ta_includs"].Split(',').ToList<string>();
+                var c1 = form["ta_includs"].Split(',').ToList();
 
                 foreach (var t in c1)
                 {
                     thing.Includes.Add(
-                        db.Things.Where(x => x.Name == t.ToString()).FirstOrDefault());
+                        db.Things.Where(x => x.Name == t).FirstOrDefault());
                 }
 
                 db.Things.Add(thing);
