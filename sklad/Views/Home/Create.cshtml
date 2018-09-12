@@ -146,9 +146,9 @@
     <div class="form-group col-md-5">
         @Html.Label("Composite parts", htmlAttributes: new { @class = "control-label d-block" })
         @*<div class="col-md-10">*@
-        @Html.ListBox("ta_includs", new List<SelectListItem>() ,new { @class = "form-control d-block", @size = "15" } )
+        @*@Html.ListBox("ta_includs", new List<SelectListItem>() ,new { @class = "form-control d-block", @size = "15" } )*@
 
-        @*@Html.ListBoxFor(model => model.Includes, new List<SelectListItem>(), new { @class = "form-control d-block", @size = "15" })*@
+        @Html.ListBoxFor(model => model.Includes, new List<SelectListItem>(), new { @class = "form-control d-block", @size = "15" })
         @*@Html.ValidationMessageFor(model => model.WorkName, "", new { @class = "text-danger" })*@
         @*</div>*@
     </div>
