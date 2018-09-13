@@ -106,7 +106,7 @@ namespace sklad.Controllers
 
             var includs = db.Things.SelectMany(p => p.Includes).Select(p => p.Name);
             var str1 = from t in db.Things
-                       where !includs.Contains(t.Name)
+                       where !includs.Contains(t.Name) && t.Id != id
                        select new SelectListItem { Text = t.Name + " s/n:" + t.SerialNumber, Value = t.Name };
 
             ViewBag.ForIncludes = str1;//.ToList<string>();
@@ -117,7 +117,7 @@ namespace sklad.Controllers
         [HttpPost]
         public ActionResult Edit(Thing thing, FormCollection form)
         {
-            if (ModelState.IsValid)
+            if (ModelState. IsValid)
             {
                 var c1 = form["ta_includs"].Split(',').ToList<string>();
 
@@ -131,6 +131,12 @@ namespace sklad.Controllers
                 }
                 else
                 {
+                    if (ModelState.Values["Includes"] == "")
+                    {
+
+                    }
+
+
                     foreach (var t in c1)
                     {
                         if (thing.Includes.Contains(db.Things.Where(x => x.Name == t).FirstOrDefault()))
