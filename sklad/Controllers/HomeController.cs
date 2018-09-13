@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using sklad.Models;
 using System.Data.Entity;
+using Microsoft.Ajax.Utilities;
 
 namespace sklad.Controllers
 {
@@ -119,35 +120,14 @@ namespace sklad.Controllers
         {
             if (ModelState. IsValid)
             {
-                var c1 = form["ta_includs"].Split(',').ToList<string>();
+                //var c1 = thing.SelIncludes;
 
                 if (!thing.Includes.Any())
                 {
-                    foreach (var t in c1)
+                    foreach (var t in thing.SelIncludes)
                     {
                         thing.Includes.Add(
                             db.Things.Where(x => x.Name == t).FirstOrDefault());
-                    }
-                }
-                else
-                {
-                    if (ModelState.Values["Includes"] == "")
-                    {
-
-                    }
-
-
-                    foreach (var t in c1)
-                    {
-                        if (thing.Includes.Contains(db.Things.Where(x => x.Name == t).FirstOrDefault()))
-                        {
-                            continue;
-                        }
-                        else
-                        {
-                            thing.Includes.Add(
-                            db.Things.Where(x => x.Name == t).FirstOrDefault());
-                        }
                     }
                 }
 

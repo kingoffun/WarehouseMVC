@@ -63,6 +63,9 @@ namespace sklad.Models
         //public Thing ParentThing { get; set; }
         public virtual ICollection<Thing> Includes { get; set; }
 
+        [NotMapped]
+        public ICollection<string> SelIncludes { get; set; }
+
         public Thing()
         {
             Includes = new HashSet<Thing>();
