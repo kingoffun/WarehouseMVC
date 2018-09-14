@@ -118,7 +118,7 @@ namespace sklad.Controllers
         [HttpPost]
         public ActionResult Edit(Thing thing, FormCollection form)
         {
-            if (ModelState. IsValid)
+            if (ModelState.IsValid)
             {
                 //var c1 = thing.SelIncludes;
 
@@ -132,6 +132,8 @@ namespace sklad.Controllers
                 }
 
                 db.Entry(thing).State = EntityState.Modified;
+                db.Entry(thing.Includes).State = EntityState.Modified;
+                //var st = db.Entry(thing).State;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
