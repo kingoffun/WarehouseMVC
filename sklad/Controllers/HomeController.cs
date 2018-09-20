@@ -121,19 +121,40 @@ namespace sklad.Controllers
             if (ModelState.IsValid)
             {
                 //var c1 = thing.SelIncludes;
+                db.Things.Attach(thing);
 
                 if (!thing.Includes.Any())
                 {
+                    var pt1 = db.Things.Where(th => th.Id == thing.Id).Include(i => i.Includes).FirstOrDefault();
+
                     foreach (var t in thing.SelIncludes)
                     {
-                        thing.Includes.Add(
-                            db.Things.Where(x => x.Name == t).FirstOrDefault());
+                        
+                    var pt = db.Things.Where(th => th.Id == thing.Id).Include(i => i.Includes);
+
+                        //if (! thing.Includes.Contains(db.Things.Where(x => x.Name == t).FirstOrDefault()))
+                        if (! pt.Includes.Contains(db.Things.Where(x => x.Name == t).FirstOrDefault()))
+                        {
+                            thing.Includes.Add(db.Things.Where(x => x.Name == t).FirstOrDefault());
+                        }
+
                     }
                 }
 
-                db.Entry(thing).State = EntityState.Modified;
-                db.Entry(thing.Includes).State = EntityState.Modified;
+                //using (var db_tmp = new WarehouseContext())
+                //{
+                //    var thing_tmp = thing;
+                //    var includs_tmp = thing.Includes;
+
+                //    db_tmp.Attach(thing_tmp);
+
+                //}
+
+                //DbSet.Attach(thing);
+                //db.Entry(thing).State = EntityState.Modified;
+                //db.Entry(thing.Includes).State = EntityState.Modified;
                 //var st = db.Entry(thing).State;
+
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
