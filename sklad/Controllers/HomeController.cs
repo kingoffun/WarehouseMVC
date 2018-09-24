@@ -125,12 +125,15 @@ namespace sklad.Controllers
 
                 if (!thing.Includes.Any())
                 {
-                    var pt1 = db.Things.Where(th => th.Id == thing.Id).Include(i => i.Includes).FirstOrDefault();
+                    //var pt1 = db.Things
+                    //    .Where(th => th.Id == thing.Id)
+                    //    .Include(i => i.Includes)
+                    //    .SingleOrDefault();
 
                     foreach (var t in thing.SelIncludes)
                     {
                         
-                    var pt = db.Things.Where(th => th.Id == thing.Id).Include(i => i.Includes);
+                    var pt = db.Things.Where(th => th.Id == thing.Id).Include(i => i.Includes).SingleOrDefault();
 
                         //if (! thing.Includes.Contains(db.Things.Where(x => x.Name == t).FirstOrDefault()))
                         if (! pt.Includes.Contains(db.Things.Where(x => x.Name == t).FirstOrDefault()))
