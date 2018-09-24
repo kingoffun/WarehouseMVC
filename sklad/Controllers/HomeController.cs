@@ -116,48 +116,36 @@ namespace sklad.Controllers
         }
 
         [HttpPost]
-        public ActionResult Edit(Thing thing, FormCollection form)
+        public ActionResult Edit(Thing thing)
         {
             if (ModelState.IsValid)
             {
-                //var c1 = thing.SelIncludes;
                 db.Things.Attach(thing);
 
                 if (!thing.Includes.Any())
                 {
-                    //var pt1 = db.Things
-                    //    .Where(th => th.Id == thing.Id)
-                    //    .Include(i => i.Includes)
-                    //    .SingleOrDefault();
-
-                    foreach (var t in thing.SelIncludes)
-                    {
-                        
                     var pt = db.Things.Where(th => th.Id == thing.Id).Include(i => i.Includes).SingleOrDefault();
 
-                        //if (! thing.Includes.Contains(db.Things.Where(x => x.Name == t).FirstOrDefault()))
-                        if (! pt.Includes.Contains(db.Things.Where(x => x.Name == t).FirstOrDefault()))
+                    // deleting of deselected things
+                    foreach (var pi in pt.Includes.ToList())
+                    {
+                        if ( ! thing.SelIncludes.Contains(pi.Name))
+                        {
+                            thing.Includes.Remove(db.Things.Where(x => x.Name == pi.Name).FirstOrDefault());
+                        }
+                    }
+
+                    // adding selected things
+                    foreach (var t in thing.SelIncludes)
+                    {
+                        if (!pt.Includes.Contains(db.Things.Where(x => x.Name == t).FirstOrDefault()))
                         {
                             thing.Includes.Add(db.Things.Where(x => x.Name == t).FirstOrDefault());
                         }
-
                     }
                 }
 
-                //using (var db_tmp = new WarehouseContext())
-                //{
-                //    var thing_tmp = thing;
-                //    var includs_tmp = thing.Includes;
-
-                //    db_tmp.Attach(thing_tmp);
-
-                //}
-
-                //DbSet.Attach(thing);
-                //db.Entry(thing).State = EntityState.Modified;
-                //db.Entry(thing.Includes).State = EntityState.Modified;
-                //var st = db.Entry(thing).State;
-
+                db.Entry(thing).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
