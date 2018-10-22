@@ -17,6 +17,7 @@ namespace sklad.Controllers
         {
             var property = db.Things;
             TempData["PiecesAmaunt"] = db.Things.Count();
+            ViewBag.PiecesAmaunt = db.Things.Count();
 
             return View(property);
         }
