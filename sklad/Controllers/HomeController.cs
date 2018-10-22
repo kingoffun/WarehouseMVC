@@ -16,6 +16,8 @@ namespace sklad.Controllers
         public ActionResult Index()
         {
             var property = db.Things;
+            TempData["PiecesAmaunt"] = db.Things.Count();
+
             return View(property);
         }
 
