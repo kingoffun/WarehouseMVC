@@ -215,7 +215,7 @@
                 <tbody>
                     @foreach (var item in Model)
                     {
-                        <tr>
+                        <tr class="clickable-row" data-href=@Url.Action("Edit", "Home", new { Id = item.Id })>
                             @Html.HiddenFor(modelItem => item.Id)
                             <td>
                                 @Html.DisplayFor(modelItem => item.WorkName)
