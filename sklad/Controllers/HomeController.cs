@@ -16,8 +16,16 @@ namespace sklad.Controllers
         public ActionResult Index()
         {
             var property = db.Things;
-            TempData["PiecesAmaunt"] = db.Things.Count();
+            
+            // amount of thingth in db
             ViewBag.PiecesAmaunt = db.Things.Count();
+
+            // list of all accounts in db
+            ViewBag.Accounts = db.Things.Select(ac => ac.Account).Distinct().ToList<int>();
+            // list of all works in db
+            ViewBag.Works = db.Things.Select(wk => wk.WorkName).Distinct().ToList<string>();
+
+
 
             return View(property);
         }
@@ -155,5 +163,16 @@ namespace sklad.Controllers
 
             return View(thing);
         }
+
+        // additional helpfull methods
+
+        //public List<int> GetAccounts()
+        //{
+        //    return db.Things.Select(ac => ac.Account).ToList<int>();
+
+
+        //    //return new List<int>();
+        //}
+
     }
 }

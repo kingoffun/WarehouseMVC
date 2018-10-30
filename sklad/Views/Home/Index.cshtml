@@ -1,4 +1,5 @@
 ﻿@model IEnumerable<sklad.Models.Thing>
+@using sklad.Models
 
 @{
     ViewBag.Title = "Index";
@@ -29,11 +30,15 @@
                     </div>
                     <div id="collapseCategory" class="collapse show">
                         <div class="card-body ">
-                            <p><input type="checkbox" /> Display</p>
+                            @*<p><input type="checkbox" /> Display</p>
                             <p><input type="checkbox" /> HDD</p>
                             <p><input type="checkbox" /> RAM</p>
                             <p><input type="checkbox" /> CPU</p>
-                            <p><input type="checkbox" /> Motherboard</p>
+                            <p><input type="checkbox" /> Motherboard</p>*@
+                            @foreach (var p in Enum.GetNames(typeof(PropertyTypes)))
+                            {
+                                <p><input type="checkbox" />@p</p>
+                            }
                         </div>
                     </div>
                 </div>
@@ -49,10 +54,14 @@
                     </div>
                     <div id="collapseAccounts" class="collapse show">
                         <div class="card-body ">
-                            <p><input type="checkbox" /> 1512</p>
+                            @*<p><input type="checkbox" /> 1512</p>
                             <p><input type="checkbox" /> 1515</p>
                             <p><input type="checkbox" /> 1517</p>
-                            <p><input type="checkbox" /> 1518</p>
+                            <p><input type="checkbox" /> 1518</p>*@
+                            @foreach (var ac in ViewBag.Accounts)
+                            {
+                                <p><input type="checkbox" />@ac</p>
+                            }
                         </div>
                     </div>
                 </div>
@@ -68,10 +77,14 @@
                     </div>
                     <div id="collapseWorks" class="collapse show">
                         <div class="card-body ">
-                            <p><input type="checkbox" /> Parametr</p>
+                            @*<p><input type="checkbox" /> Parametr</p>
                             <p><input type="checkbox" /> Grom-2</p>
                             <p><input type="checkbox" /> Barva-A</p>
-                            <p><input type="checkbox" /> Tsylindr</p>
+                            <p><input type="checkbox" /> Tsylindr</p>*@
+                            @foreach (var wk in ViewBag.Works)
+                            {
+                                <p><input type="checkbox" />@wk</p>
+                            }
                         </div>
                     </div>
                 </div>
