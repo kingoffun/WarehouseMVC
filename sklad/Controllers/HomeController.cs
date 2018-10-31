@@ -147,12 +147,16 @@ namespace sklad.Controllers
                     }
 
                     // adding selected things
-                    foreach (var t in thing.SelIncludes)
+                    if (thing.SelIncludes != null)
                     {
-                        if (!pt.Includes.Contains(db.Things.Where(x => x.Name == t).FirstOrDefault()))
+                        foreach (var t in thing.SelIncludes)
                         {
-                            thing.Includes.Add(db.Things.Where(x => x.Name == t).FirstOrDefault());
+                            if (!pt.Includes.Contains(db.Things.Where(x => x.Name == t).FirstOrDefault()))
+                            {
+                                thing.Includes.Add(db.Things.Where(x => x.Name == t).FirstOrDefault());
+                            }
                         }
+
                     }
                 }
 
