@@ -100,14 +100,14 @@
                 e.preventDefault();
             }
 
-            $('#SelIncludes').append($(selectedOpts).clone());
-            $('#SelIncludes option').prop("selected", "selected");
+            $('#Includes').append($(selectedOpts).clone());
+            $('#Includes option').prop("selected", "selected");
             $(selectedOpts).remove();
             e.preventDefault();
         });
 
         $('#btn_thing_right').click(function (e) {
-            var selectedOpts = $('#SelIncludes option:selected');
+            var selectedOpts = $('#Includes option:selected');
             if (selectedOpts.length == 0) {
                 alert("Nothing from Composit parts selected to move.");
                 e.preventDefault();
@@ -118,7 +118,7 @@
         });
 
         $('#crtForm').submit(function (e) {
-            $('#SelIncludes option').prop("selected", "selected");
+            $('#Includes option').prop("selected", "selected");
         });
 
         $(document).ready(function ($) {
